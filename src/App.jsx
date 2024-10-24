@@ -80,8 +80,13 @@ const App = () => {
       },
     ]    
   )
-  const HandleAddFighter = () => {
-    console.log('HandelAddHere')
+  const HandleAddFighter = (zombie) => {
+    console.log(zombie)
+    // get the clicked zombie's object
+    // before adding check if enough money to afford them
+      // Not log to console. not enough money 
+    // substrac fighter's price from money
+      // add fighter to handle function as param
   }
   
   
@@ -93,16 +98,16 @@ const App = () => {
     <div className="main">
       
         {
-        zombieFighters.map((zombie, idx) => {
+        zombieFighters.map((fighter, idx) => {
           return(
             <>
               <ul>
-                <li><img src={zombie.img}/></li>
-                <li>{zombie.name}</li>
-                <li>Price: {zombie.price}</li>
-                <li>strength: {zombie.strength}</li>
-                <li>agility: {zombie.agility}</li>
-                <li><button onClick={HandleAddFighter}>Add</button></li>
+                <li><img src={fighter.img}/></li>
+                <li>{fighter.name}</li>
+                <li>Price: {fighter.price}</li>
+                <li>strength: {fighter.strength}</li>
+                <li>agility: {fighter.agility}</li>
+                <li><button onClick={() =>HandleAddFighter(fighter)}>Add</button></li>
               </ul>
             </>
           )
