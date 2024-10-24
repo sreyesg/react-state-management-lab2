@@ -80,13 +80,22 @@ const App = () => {
       },
     ]    
   )
-  const HandleAddFighter = (zombie) => {
-    console.log(zombie)
+  const HandleAddFighter = (fighter) => {
     // get the clicked zombie's object
-    // before adding check if enough money to afford them
-      // Not log to console. not enough money 
+    console.log(fighter)
+    // before adding check if enough money to afford the fighter
+    if(fighter.price > money){
+      // return not enough money to affort fighter 
+      return console.log(`Not enough money to affort this fighter`)
+    }
     // substrac fighter's price from money
-      // add fighter to handle function as param
+    let remainder = money - fighter.price 
+    console.log(remainder)
+    setMoney(remainder)
+      // add fighter to newTeamArray
+    const newTeamArray = [...team, fighter]
+    setTeam(newTeamArray) 
+    console.log('this is the team', team)
   }
   
   
