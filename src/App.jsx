@@ -1,11 +1,12 @@
 // src/App.jsx
 import {useState} from 'react'
+import './App.css'
 
 const App = () => {
 
   const [team, setTeam] = useState([])
   const [money, setMoney] = useState(100)
-  const [zombieFighter, setZombieFighters] = useState([
+  const [zombieFighters, setZombieFighters] = useState(
     [
       {
         name: 'Survivor',
@@ -78,9 +79,32 @@ const App = () => {
         img: 'https://via.placeholder.com/150/602b9e',
       },
     ]    
-  ])
+  )
   return (
-    <h1>Hello world! It is great to see you</h1>
+    <>
+    <h1>Zombie Fighters Team</h1>
+    <h3>Money: {money}</h3>
+    <div className="main">
+      
+        {
+        zombieFighters.map((zombie, idx) => {
+          return(
+            <>
+              <ul>
+                <li><img src={zombie.img}/></li>
+                <li>{zombie.name}</li>
+                <li>Price: {zombie.price}</li>
+                <li>strength: {zombie.strength}</li>
+                <li>agility: {zombie.agility}</li>
+              </ul>
+            </>
+          )
+        })
+        }
+      
+    </div>
+    </>
+
   );
 }
 

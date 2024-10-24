@@ -1,9 +1,16 @@
+.main{
+  display: flex;
+  flex-direction: row;
+}
 ul {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
 li {
+  display: flex;
+
   list-style: none;
   margin: 10px;
 }
