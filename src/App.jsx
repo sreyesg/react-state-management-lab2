@@ -80,6 +80,12 @@ const App = () => {
       },
     ]    
   )
+  const HandleAddFighter = () => {
+    console.log('HandelAddHere')
+  }
+  
+  
+  
   return (
     <>
     <h1>Zombie Fighters Team</h1>
@@ -96,6 +102,7 @@ const App = () => {
                 <li>Price: {zombie.price}</li>
                 <li>strength: {zombie.strength}</li>
                 <li>agility: {zombie.agility}</li>
+                <li><button onClick={HandleAddFighter}>Add</button></li>
               </ul>
             </>
           )
