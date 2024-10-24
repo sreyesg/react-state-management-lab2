@@ -104,7 +104,29 @@ const App = () => {
     <>
     <h1>Zombie Fighters Team</h1>
     <h3>Money: {money}</h3>
-    <div className="main">
+    
+    <h3>Team</h3>
+    <div className="fighters">
+      {/* {team ? ('pick some team members'):('')} */}
+      {
+      team.map((fighter, idx) => {
+          return(
+            <>
+              <ul>
+                <li><img src={fighter.img}/></li>
+                <li>{fighter.name}</li>
+                <li>Price: {fighter.price}</li>
+                <li>strength: {fighter.strength}</li>
+                <li>agility: {fighter.agility}</li>
+                <li><button onClick={() =>HandleAddFighter(fighter)}>Remove</button></li>
+              </ul>
+            </>
+          )
+        })
+      }
+    </div>
+    <h3>Fighters</h3>
+    <div className="fighters">
       
         {
         zombieFighters.map((fighter, idx) => {
