@@ -107,7 +107,7 @@ const App = () => {
     
     <h3>Team</h3>
     <div className="fighters">
-      {/* {team ? ('pick some team members'):('')} */}
+      {!team.length ? 'pick some team members':''}
       {
       team.map((fighter, idx) => {
           return(
