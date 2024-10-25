@@ -3,7 +3,7 @@ import {useState} from 'react'
 import './App.css'
 
 const App = () => {
-
+  // States
   const [team, setTeam] = useState([])
   const [money, setMoney] = useState(100)
   const [zombieFighters, setZombieFighters] = useState(
@@ -80,7 +80,12 @@ const App = () => {
       },
     ]    
   )
-  const HandleAddFighter = (fighter) => {
+  const [strength, setStrength] = useState(0)
+  const [totalAgility, setTotalAgility] = useState(0)
+
+
+  // Handlers
+  const handleAddFighter = (fighter) => {
     // get the clicked zombie's object
     console.log(fighter)
     // before adding check if enough money to afford the fighter
@@ -90,20 +95,36 @@ const App = () => {
     }
     // substrac fighter's price from money
     let remainder = money - fighter.price 
-    console.log(remainder)
     setMoney(remainder)
       // add fighter to newTeamArray
-    const newTeamArray = [...team, fighter]
-    setTeam(newTeamArray) 
+    setTeam([...team, fighter])
+    // add Fighter.strength to state variable strength 
+    setStrength(strength + fighter.strength) 
+    setTotalAgility(totalAgility = fighter.agility)
+
+
     console.log('this is the team', team)
   }
-  
+  const handleRemoveFighter = (fighter) => {
+    // grab fighter's name
+    const fighterToRemove = fighter.name
+    console.log('remove fighter', fighterToRemove)
+      // filter array where fighter's name is not selected fighter
+    const newArray = team.filter(fighter => fighter.name !== fighterToRemove)
+    setTeam(newArray)  
+    setMoney(money - fighter.price)
+    setStrength(strength - fighter.strength)
+    setMoney(totalAgility - fighter.agility)
+    
+  }
   
   
   return (
     <>
     <h1>Zombie Fighters Team</h1>
     <h3>Money: {money}</h3>
+    <h3>Total Strength: {strength}</h3>
+    <h3>Total Agility: {totalAgility}</h3>
     
     <h3>Team</h3>
     <div className="fighters">
@@ -118,7 +139,7 @@ const App = () => {
                 <li>Price: {fighter.price}</li>
                 <li>strength: {fighter.strength}</li>
                 <li>agility: {fighter.agility}</li>
-                <li><button onClick={() =>HandleAddFighter(fighter)}>Remove</button></li>
+                <li><button onClick={() => handleRemoveFighter(fighter)}>Remove</button></li>
               </ul>
             </>
           )
@@ -138,7 +159,7 @@ const App = () => {
                 <li>Price: {fighter.price}</li>
                 <li>strength: {fighter.strength}</li>
                 <li>agility: {fighter.agility}</li>
-                <li><button onClick={() =>HandleAddFighter(fighter)}>Add</button></li>
+                <li><button onClick={() =>handleAddFighter(fighter)}>Add</button></li>
               </ul>
             </>
           )
