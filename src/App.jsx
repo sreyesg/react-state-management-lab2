@@ -100,7 +100,7 @@ const App = () => {
     setTeam([...team, fighter])
     // add Fighter.strength to state variable strength 
     setStrength(strength + fighter.strength) 
-    setTotalAgility(totalAgility = fighter.agility)
+    setTotalAgility(totalAgility + fighter.agility)
 
 
     console.log('this is the team', team)
@@ -108,11 +108,14 @@ const App = () => {
   const handleRemoveFighter = (fighter) => {
     // grab fighter's name
     const fighterToRemove = fighter.name
-    console.log('remove fighter', fighterToRemove)
+    console.log('REMOVE FIGHTER', fighterToRemove)
       // filter array where fighter's name is not selected fighter
     const newArray = team.filter(fighter => fighter.name !== fighterToRemove)
     setTeam(newArray)  
-    setMoney(money - fighter.price)
+    let remainder2 = money + fighter.price
+    console.log(remainder2, "remainder 2")
+    setMoney(remainder2)
+    // console.log(money, fighter.price)
     setStrength(strength - fighter.strength)
     setMoney(totalAgility - fighter.agility)
     
